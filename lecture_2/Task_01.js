@@ -4,15 +4,8 @@ function isOnlyNumbersInside(array) {
 function isValidNumber(num) {
 	return typeof num === "number" && !isNaN(num);
 };
-function customSlice(array, start, end) {
-	const result = [];
-  
-  for (let i = start; i <= end; i += 1) {
-  	if (array[i])
-    	result.push(array[i]);
-  }
-  
-  return result;
+function isInIntervals(value, lowest, highest) {
+	return (value >= lowest && value <= highest);
 };
 
 function selectFromInterval(numArray, start, end) {
@@ -23,5 +16,5 @@ function selectFromInterval(numArray, start, end) {
   if (end < start)
   	[end, start] = [start, end];
   
-  return customSlice(numArray, start - 1, end - 1);
+  return numArray.filter((n) => isInIntervals(n, start, end));
 };
